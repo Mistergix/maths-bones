@@ -30,49 +30,27 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - ShapesRuntime
-    - MoreMountains.Feedbacks
     - LeTai.TrueShadow
     - Assembly-CSharp
     - Dreamteck.Utilities
-    - MoreMountains.NiceVibrations.Haptics
-    - MoreMountains.Feel.Demos
-    - MoreMountains.Tools
     - Dreamteck.Splines
-    - MoreMountains.NiceVibrations.Demos
     - LeTai.TrueShadow.Demo
-    - MoreMountains.Feedbacks.MMTools
-    - MoreMountains.Feedbacks.TextMeshPro
     - Animancer.Examples
     - LeanTouch
     - LeanCommon
-    - MoreMountains.Feedbacks.Cinemachine
     - Animancer
-    - MoreMountains.Tools.Feedbacks
-    - Google.Play.Core
-    - Google.Play.Common
-    - MoreMountains.Feel.Demos.URP
-    - Google.Play.AppUpdate
+    - ALINE
     - LeanLocalization
     - Sirenix.OdinInspector.CompatibilityLayer
     - Animancer.FSM
-    - MoreMountains.Feel.Demos.HDRP
-    - MoreMountains.Tools.Cinemachine
-    - MoreMountains.NiceVibrations
-    - MoreMountains.Tools.TextMeshPro
-    - LoadingScreen.Misc
-    - MoreMountains.Feedbacks.NiceVibrations
     - Cinemachine
-    - MoreMountains.Tools.Editor
-    - Google.Android.AppBundle.Editor
     - Dreamteck.Splines.Editor
     - ShapesEditor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
-    - MoreMountains.Feedbacks.Editor
     - AssetUsageDetector.Editor
     - Dreamteck.Utilities.Editor
     - LeTai.TrueShadow.Editor
-    - MoreMountains.Tools.Feedbacks.Editor
-    - MoreMountains.NiceVibrations.Editor
+    - ALINEEditor
     - ALINEPackageToolsEditor
     - Sirenix.OdinInspector.Modules.UnityMathematics
     showAdvancedSettings: 0
