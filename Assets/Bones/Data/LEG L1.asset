@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208d1b25772b4163b80b66644f93ca3b, type: 3}
   m_Name: LEG L1
   m_EditorClassIdentifier: 
+  parent: {fileID: 11400000, guid: 132436da5b095fa48b1496326d118d55, type: 2}

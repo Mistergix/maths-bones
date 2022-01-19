@@ -103,7 +103,6 @@ namespace PGSauce.Games.BoneGenerator
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
-        
             Gizmos.DrawLine(_minPoint, _maxPoint);
         }
     }

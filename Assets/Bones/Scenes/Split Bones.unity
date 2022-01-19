@@ -411,3 +411,4 @@ MonoBehaviour:
     - {fileID: -3702037217650275473, guid: 0d6cae5e512623843bc8f0e12709fdd0, type: 3}
   bonesGeneratorPrefab: {fileID: 78415214948241851, guid: dfd0d0b5c8766784883f5717f09c2468, type: 3}
   material: {fileID: 8950265562796933603, guid: 76fc0cd01235dfe459be7f7da54d6cf1, type: 3}
+  mainBodyPart: {fileID: 11400000, guid: 132436da5b095fa48b1496326d118d55, type: 2}
