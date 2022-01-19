@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb2a2781f9a1194fb8a32a09e5ea91c, type: 3}
-  m_Name: _____________PGSettings
+  m_Script: {fileID: 11500000, guid: 208d1b25772b4163b80b66644f93ca3b, type: 3}
+  m_Name: TORSO
   m_EditorClassIdentifier: 
-  splashscreen: {fileID: 0}
-  drawMode: 0
-  splashscreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  gameName: BoneGenerator
-  gameNameInNamespace: BoneGenerator

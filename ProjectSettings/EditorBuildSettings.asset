@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Bones/Scenes/Split Bones.unity
+    guid: 645204b7fbeae9a46ad91a9475585c11
   m_configObjects: {}
