@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace PGSauce.Games.BoneGenerator
 {
@@ -6,5 +7,7 @@ namespace PGSauce.Games.BoneGenerator
     public class BodyPart : ScriptableObject
     {
         public BodyPart parent;
+        public Vector3 boneLocalPosition;
+        public List<BodyPart> Children { get; set; }
     }
 }

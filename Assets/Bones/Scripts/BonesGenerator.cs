@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PGSauce.Core;
+using PGSauce.Core.PGDebugging;
+using PGSauce.Core.Utilities;
 using UnityEngine;
 
 namespace PGSauce.Games.BoneGenerator
@@ -8,6 +11,9 @@ namespace PGSauce.Games.BoneGenerator
     {
         [SerializeField] private MeshFilter meshFilter;
         [SerializeField] private MeshRenderer meshRenderer;
+        [SerializeField] private GlobalFloat boneGizmosRadius;
+
+        public Vector3 debugOffset;
 
         private Vector3[] _vertices;
         private Vector3 _barycenter;
@@ -16,12 +22,19 @@ namespace PGSauce.Games.BoneGenerator
         private List<Vector3> _projectedPoints;
         private Vector3 _maxPoint;
         private Vector3 _minPoint;
+        private BodyPart _bodyPart;
+        private Vector3 _rendererPos;
 
         private const int EigenVectorIterations = 100;
 
-        public void GenerateBone(Mesh mesh, Material material)
+        public Vector3 MaxPoint => transform.GetWorldPosition(_maxPoint + debugOffset);
+
+        public Vector3 MinPoint => transform.GetWorldPosition(_minPoint + debugOffset);
+
+        public void GenerateBone(Mesh mesh, Material material, BodyPart bodyPart)
         {
             _projectedPoints = new List<Vector3>();
+            _bodyPart = bodyPart;
             
             meshFilter.mesh = mesh;
             meshRenderer.material = material;
@@ -36,6 +49,16 @@ namespace PGSauce.Games.BoneGenerator
             OffsetBackVertices();
         }
 
+        public void SetMinPointFromWorldPosition(Vector3 worldPos)
+        {
+            _minPoint = transform.GetLocalPosition(worldPos);
+        }
+
+        public void SetMaxPointFromWorldPosition(Vector3 worldPos)
+        {
+            _maxPoint = transform.GetLocalPosition(worldPos);
+        }
+
         private void OffsetBackVertices()
         {
             for (var i = 0; i < _vertices.Length; i++)
@@ -43,8 +66,8 @@ namespace PGSauce.Games.BoneGenerator
                 _vertices[i] += _barycenter;
             }
 
-            _minPoint += _barycenter;
-            _maxPoint += _barycenter;
+            _minPoint = MinPoint + _barycenter;
+            _maxPoint = MaxPoint + _barycenter;
         }
 
         private void ProjectPointsOntoEigenVector()
@@ -102,8 +125,54 @@ namespace PGSauce.Games.BoneGenerator
         
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(_minPoint, _maxPoint);
+            Gizmos.color = boneGizmosRadius ? Color.blue : Color.black;
+            Gizmos.DrawLine(MinPoint, MaxPoint);
+            if (boneGizmosRadius)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(MinPoint, boneGizmosRadius);
+                Gizmos.color = Color.green;
+                Gizmos.DrawSphere(MaxPoint, boneGizmosRadius);
+            }
+        }
+        
+        public void RepositionMax(Vector3 point)
+        {
+            Reposition(point);
+            SetMaxPointFromWorldPosition(point);
+        }
+
+        public void Reposition(Vector3 point)
+        {
+            var local = transform.parent.GetLocalPosition(point);
+            var localOffset = (_bodyPart.boneLocalPosition - local);
+            PGDebug.Message($"Reposition : LOCAL {local.ToString("F4")}, OFFSET {localOffset.ToString("F4")} for {name}").Log();
+            //_minPoint += localOffset;
+            //_maxPoint += localOffset;
+            transform.position = point;
+
+            var children = GetComponentsInChildren<BonesGenerator>();
+            foreach (var child in children)
+            {
+                child._minPoint += localOffset;
+                child._maxPoint += localOffset;
+            }
+        }
+
+        public void RepositionMin(Vector3 point)
+        {
+            Reposition(point);
+            SetMinPointFromWorldPosition(point);
+        }
+
+        public void RecordRenderer()
+        {
+            _rendererPos = meshFilter.transform.position;
+        }
+
+        public void RepositionRenderer()
+        { 
+            meshFilter.transform.position = _rendererPos;
         }
     }
 }

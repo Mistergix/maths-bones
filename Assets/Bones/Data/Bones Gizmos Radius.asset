@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 208d1b25772b4163b80b66644f93ca3b, type: 3}
-  m_Name: LEG L2
+  m_Script: {fileID: 11500000, guid: 503c436eb0874174b8132d8423726ee5, type: 3}
+  m_Name: Bones Gizmos Radius
   m_EditorClassIdentifier: 
-  parent: {fileID: 11400000, guid: 4d13a5d70ed68c64e91bf1f825202feb, type: 2}
+  value: 0.01
