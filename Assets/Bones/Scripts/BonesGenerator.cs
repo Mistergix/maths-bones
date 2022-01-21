@@ -30,7 +30,7 @@ namespace PGSauce.Games.BoneGenerator
         public Vector3 MaxPoint => transform.GetWorldPosition(_maxPoint + debugOffset);
 
         public Vector3 MinPoint => transform.GetWorldPosition(_minPoint + debugOffset);
-
+        public Vector3 Position => transform.position;
         public void GenerateBone(Mesh mesh, Material material, BodyPart bodyPart)
         {
             _projectedPoints = new List<Vector3>();

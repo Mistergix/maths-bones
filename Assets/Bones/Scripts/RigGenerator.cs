@@ -14,6 +14,7 @@ namespace PGSauce.Games.BoneGenerator
         [SerializeField] private BodyPart mainBodyPart;
         [SerializeField] private float minDistanceCheckBones;
         [SerializeField] private float epsilonMerge;
+        [SerializeField] private RagdollCreator ragdollCreator;
 
         private ConcreteSerializableDictionary<BodyPart, BonesGenerator> _boneGenerators;
 
@@ -30,6 +31,7 @@ namespace PGSauce.Games.BoneGenerator
             ParentBones(); 
             CreateJoints();
             RepositionRenderers();
+            ragdollCreator.OnWizardCreate(_boneGenerators);
         }
 
         private void RepositionRenderers()
