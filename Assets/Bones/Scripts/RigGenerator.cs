@@ -15,6 +15,8 @@ namespace PGSauce.Games.BoneGenerator
         [SerializeField] private float minDistanceCheckBones;
         [SerializeField] private float epsilonMerge;
         [SerializeField] private RagdollCreator ragdollCreator;
+        [SerializeField] private bool createRagdoll;
+        [SerializeField] private Transform lookAt;
 
         private ConcreteSerializableDictionary<BodyPart, BonesGenerator> _boneGenerators;
 
@@ -24,6 +26,8 @@ namespace PGSauce.Games.BoneGenerator
             
             GenerateBones();
             Rig();
+            lookAt.SetParent(_boneGenerators[mainBodyPart].transform);
+            lookAt.localPosition = Vector3.zero;
         }
 
         private void Rig()
@@ -31,7 +35,10 @@ namespace PGSauce.Games.BoneGenerator
             ParentBones(); 
             CreateJoints();
             RepositionRenderers();
-            ragdollCreator.OnWizardCreate(_boneGenerators);
+            if (createRagdoll)
+            {
+                ragdollCreator.OnWizardCreate(_boneGenerators);
+            }
         }
 
         private void RepositionRenderers()
