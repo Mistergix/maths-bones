@@ -119,12 +119,10 @@ namespace PGSauce.Games.BoneGenerator
                 }
                 else
                 {
-                    index += 1;
-                    if (index < childCount)
-                    {
-                        currentParent = mainBodyPart;
-                        currentChild = mainBodyPart.Children[index];
-                    }
+                    index++;
+                    if (index >= childCount) {continue;}
+                    currentParent = mainBodyPart;
+                    currentChild = mainBodyPart.Children[index];
                 }
             }
             
